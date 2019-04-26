@@ -16,20 +16,18 @@ int sum_of_multiples(int find_multiples_of, int upper_limit)
 
 int sum_of_common_multiples(int a, int b, int upper_limit)
 {
-    int larger_integer = (a > b) ? (a) : (b);
-    int multiple_of_a = 0;
-    int multiple_of_b = 0;
+    int larger_integer  = (a > b) ? (a) : (b);
+    int smaller_integer = (larger_integer == a) ? (b) : (a);
+    int multiple_of_larger_integer = 0;
     int sum = 0;
     int multiplier = 1;
 
     while(multiplier * larger_integer < upper_limit)
     {
-        multiple_of_a = a * multiplier;
-        multiple_of_b = b * multiplier;
-
-        if (multiple_of_a == multiple_of_b)
+        multiple_of_larger_integer = multiplier * larger_integer;
+        if (multiple_of_larger_integer % smaller_integer == 0)
         {
-            sum += multiple_of_a;
+            sum += multiple_of_larger_integer;
         }
 
         ++multiplier;
@@ -40,7 +38,7 @@ int sum_of_common_multiples(int a, int b, int upper_limit)
 
 int main()
 {
-    int upper_limit = 16;
+    int upper_limit = 1000;
     std::cout << "The sum of all multiples of 3 or 5 below " << upper_limit << " is " 
               << (sum_of_multiples(3, upper_limit) + sum_of_multiples(5, upper_limit) - sum_of_common_multiples(3, 5, upper_limit))
               << std::endl;
