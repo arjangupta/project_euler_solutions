@@ -1,11 +1,11 @@
 #include <iostream>
 
-void fibonacci_sequence(int max_value)
+void fibonacci_sequence_evens_sum(int max_value)
 {
     int previous_previous_value = 1; //first value
     int previous_value = 2; //second value 
     int current_value  = 0;
-    int sum = previous_value + previous_previous_value;
+    int sum = previous_value; //only 2 is even
 
     std::cout << "Fibonacci sequence up till " << max_value << ": "
               << previous_previous_value
@@ -17,16 +17,17 @@ void fibonacci_sequence(int max_value)
         std::cout << ", " << current_value;
         previous_previous_value = previous_value;
         previous_value          = current_value;
-        sum += current_value;
+        if (current_value % 2 == 0)
+        {
+            sum += current_value;
+        }
     }
 
-    std::cout << std::endl << "Cumulative sum is: " << sum << std::endl;
-    std::cout << "Sum using the formula [2*F(n) + F(n-1) - 2] is "
-              << (2 * previous_value) + previous_previous_value - 2 << std::endl;
+    std::cout << std::endl << "Sum of the even Fibonacci terms is: " << sum << std::endl;
 }
 
 int main()
 {
-    fibonacci_sequence(300);
+    fibonacci_sequence_evens_sum(4000000); //four million
     return 0;
 }
