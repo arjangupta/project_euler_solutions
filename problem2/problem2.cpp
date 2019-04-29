@@ -20,7 +20,9 @@ void fibonacci_sequence(int max_value)
         sum += current_value;
     }
 
-    std::cout << std::endl << "And the sum is " << sum << std::endl;
+    std::cout << std::endl << "Cumulative sum is: " << sum << std::endl;
+    std::cout << "Sum using the formula [2*F(n) + F(n-1) - 2] is "
+              << (2 * previous_value) + previous_previous_value - 2 << std::endl;
 }
 
 int main()
