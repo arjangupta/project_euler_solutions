@@ -4,9 +4,11 @@
 def sum_of_multiples(integer, upper_limit):
     multiplier = 1
     sum = 0
-    while integer * multiplier < upper_limit: #is there any way to do the integer * multiplier only once?
-        sum += integer * multiplier
+    multiple = integer * multiplier
+    while multiple < upper_limit:
+        sum += multiple
         multiplier += 1
+        multiple = integer * multiplier
     return sum
 
 print(f"Sum of the multiples of 5 below 16 is {sum_of_multiples(5, 16)}")
